@@ -223,6 +223,16 @@ class GalateaUser(ModelSQL, ModelView):
         "Update salt before saving"
         return super(GalateaUser, cls).write(users, cls._convert_values(values))
 
+    @classmethod
+    def signal_login(cls, user, session=None, website=None):
+        "Flask signal to login"
+        return
+
+    @classmethod
+    def signal_logout(cls, user, session=None, website=None):
+        "Flask signal to logout"
+        return
+
 
 class GalateaUserWebSite(ModelSQL):
     'Galatea User - Website'
