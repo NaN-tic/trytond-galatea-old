@@ -97,7 +97,6 @@ class GalateaStaticFile(ModelSQL, ModelView):
     file_binary = fields.Function(fields.Binary('File', filename='name'),
         'get_file_binary', 'set_file_binary')
     file_path = fields.Function(fields.Char('File Path'), 'get_file_path')
-    url = fields.Function(fields.Char('URL'), 'get_url')
 
     @classmethod
     def __setup__(cls):
@@ -133,7 +132,7 @@ class GalateaStaticFile(ModelSQL, ModelView):
     @classmethod
     def write(cls, files, values):
         if values.get('name'):
-            cls.raise_user_error('filename_cannot_change')
+            cls.raise_user_error('not_allow_filename')
         return super(GalateaStaticFile, cls).write(files, values)
 
     @classmethod
@@ -216,15 +215,6 @@ class GalateaStaticFile(ModelSQL, ModelView):
                 self.folder.name, self.name
             )) \
             if self.type == 'local' else self.remote_path
-
-    def get_url(self, name):
-        """Return the url if within an active request context or return
-        False values
-        """
-        if self.type == 'local':
-            return '/galatea-static/%s/%s' % (self.folder.name, self.name)
-        elif self.type == 'remote':
-            return self.remote_path
 
     @staticmethod
     def get_galatea_base_path():
