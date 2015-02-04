@@ -44,10 +44,8 @@ class GalateaStaticFolder(ModelSQL, ModelView):
         """
         Slugified folder name
         """
-        if self.get('name'):
-            if not self.get('name'):
-                self['name'] = slugify(self['name'])
-            return self['name']
+        if self.name:
+            return slugify(self.name)
 
     def check_name(self):
         '''
@@ -107,6 +105,7 @@ class GalateaStaticFile(ModelSQL, ModelView):
                 (1) '..' in file name (OR)
                 (2) file name contains '/'""",
             'change_file_name': "You can't change file name",
+            'not_allow_copy': "Not allow copy",
             })
 
     @staticmethod
@@ -133,10 +132,17 @@ class GalateaStaticFile(ModelSQL, ModelView):
         return super(GalateaStaticFile, cls).write(files, values)
 
     @classmethod
+    def copy(cls, files, default=None):
+        cls.raise_user_error('not_allow_copy')
+
+    @classmethod
     def delete(cls, files):
         for f in files:
             if f.type == 'local':
-                os.remove(f.file_path)
+                try:
+                    os.remove(f.file_path)
+                except:
+                    continue
         super(GalateaStaticFile, cls).delete(files)
 
     def check_file_name(self):
@@ -160,7 +166,8 @@ class GalateaStaticFile(ModelSQL, ModelView):
             # If the folder does not exist, create it recursively
             directory = os.path.dirname(self.file_path)
             if not os.path.isdir(directory):
-                os.makedirs(directory)
+                os.makedirs(directory, 0775)
+            os.umask(0022)
             with open(self.file_path, 'wb') as file_writer:
                 file_writer.write(file_binary)
 
@@ -186,6 +193,8 @@ class GalateaStaticFile(ModelSQL, ModelView):
         '''
         location = self.file_path if self.type == 'local' \
             else urllib.urlretrieve(self.remote_path)[0]
+        if self.type == 'local' and not os.path.exists(location):
+            return
         with open(location, 'rb') as file_reader:
             return buffer(file_reader.read())
 
