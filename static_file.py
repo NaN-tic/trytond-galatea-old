@@ -37,7 +37,8 @@ class GalateaStaticFolder(ModelSQL, ModelView):
             'invalid_name': """Invalid folder name:
                 (1) '.' in folder name (OR)
                 (2) folder name begins with '/'""",
-            'folder_cannot_change': "Folder name cannot be changed"
+            'not_allow_folder': "Not allow to change folder name",
+            'not_allow_copy': "Not allow to copy",
         })
 
     def on_change_with_name(self):
@@ -67,8 +68,12 @@ class GalateaStaticFolder(ModelSQL, ModelView):
         """
         if vals.get('name'):
             # TODO: Support this feature in future versions
-            cls.raise_user_error('folder_cannot_change')
+            cls.raise_user_error('not_allow_folder')
         return super(GalateaStaticFolder, cls).write(folders, vals)
+
+    @classmethod
+    def copy(cls, files, default=None):
+        cls.raise_user_error('not_allow_copy')
 
 
 class GalateaStaticFile(ModelSQL, ModelView):
@@ -104,8 +109,8 @@ class GalateaStaticFile(ModelSQL, ModelView):
             'invalid_file_name': """Invalid file name:
                 (1) '..' in file name (OR)
                 (2) file name contains '/'""",
-            'change_file_name': "You can't change file name",
-            'not_allow_copy': "Not allow copy",
+            'not_allow_filename': "Not allow to change file name",
+            'not_allow_copy': "Not allow to copy",
             })
 
     @staticmethod
@@ -128,7 +133,7 @@ class GalateaStaticFile(ModelSQL, ModelView):
     @classmethod
     def write(cls, files, values):
         if values.get('name'):
-            cls.raise_user_error('change_file_name')
+            cls.raise_user_error('filename_cannot_change')
         return super(GalateaStaticFile, cls).write(files, values)
 
     @classmethod
