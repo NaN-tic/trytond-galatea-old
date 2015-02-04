@@ -43,12 +43,12 @@ msgstr ""
 "                (2) el fitxe conté '/'"
 
 msgctxt "error:galatea.static.file:"
-msgid "You can't change file name"
-msgstr "No pot canviar el nom del fitxer."
+msgid "Not allow to change file name"
+msgstr "No pot cambiar el nom d'un fitxer."
 
-msgctxt "error:galatea.static.folder:"
-msgid "Folder name cannot be changed"
-msgstr "El directori no es pot canviar"
+msgctxt "error:galatea.static.file:"
+msgid "Not allow to copy"
+msgstr "No està disponible l'acció de copiar."
 
 msgctxt "error:galatea.static.folder:"
 msgid "Folder name needs to be unique"
@@ -63,6 +63,14 @@ msgstr ""
 "Nom del directori incorrecte:\n"
 "                (1) '.' el nom del directori (o bé)\n"
 "                (2) el directori acaba amb '/'"
+
+msgctxt "error:galatea.static.folder:"
+msgid "Not allow to change folder name"
+msgstr "No pot cambiar el nom d'un directori."
+
+msgctxt "error:galatea.static.folder:"
+msgid "Not allow to copy"
+msgstr "No està disponible l'acció de copiar."
 
 msgctxt "error:galatea.user:"
 msgid "Email must be unique in a company"
@@ -139,10 +147,6 @@ msgstr "Fitxer remot"
 msgctxt "field:galatea.static.file,type:"
 msgid "File Type"
 msgstr "Tipus fitxer"
-
-msgctxt "field:galatea.static.file,url:"
-msgid "URL"
-msgstr "URL"
 
 msgctxt "field:galatea.static.file,write_date:"
 msgid "Write Date"
