@@ -3,11 +3,13 @@
 # the full copyright notices and license terms.
 from trytond.pool import Pool
 from .galatea import *
+from .configuration import *
 from .static_file import *
 from .party import *
 
 def register():
     Pool.register(
+        Configuration,
         GalateaWebSite,
         GalateaWebsiteCountry,
         GalateaWebsiteCurrency,

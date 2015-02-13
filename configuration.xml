@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part galatea module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="galatea_configuration_view_form">
+            <field name="model">galatea.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_galatea_configuration_form">
+            <field name="name">Configuration</field>
+            <field name="res_model">galatea.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_galatea_configuration_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="galatea_configuration_view_form"/>
+            <field name="act_window" ref="act_galatea_configuration_form"/>
+        </record>
+        <menuitem
+                id="menu_galatea_configuration_galatea"
+                icon="tryton-list"
+                name="Galatea Configuration"
+                parent="menu_galatea_configuration"
+                action="act_galatea_configuration_form"/>
+    </data>
+</tryton>
