@@ -84,6 +84,30 @@ msgctxt "error:galatea.website:"
 msgid "Wrong connection to SMTP server. Not send email."
 msgstr "No s'ha pogut connectar al servidor SMTP. No s'ha enviat el correu."
 
+msgctxt "field:galatea.configuration,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:galatea.configuration,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:galatea.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:galatea.configuration,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:galatea.configuration,write_date:"
+msgid "Write Date"
+msgstr "Usuari creació"
+
+msgctxt "field:galatea.configuration,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
 msgctxt "field:galatea.remove.cache.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -491,6 +515,10 @@ msgctxt "help:galatea.website,uri:"
 msgid "Base Uri Site (with \"/\")"
 msgstr "Base Uri del lloc web (amb \"/\")"
 
+msgctxt "model:galatea.configuration,name:"
+msgid "Galatea Configuration"
+msgstr "Configuració Galatea"
+
 msgctxt "model:galatea.remove.cache.start,name:"
 msgid "Galatea Remove Cache Start"
 msgstr "Inici eliminar memòria cau Galatea"
@@ -530,6 +558,10 @@ msgstr "Relació països i llocs web"
 msgctxt "model:galatea.website-currency.currency,name:"
 msgid "Currencies to be made available on website"
 msgstr "Monedes disponibles en el lloc web"
+
+msgctxt "model:ir.action,name:act_galatea_configuration_form"
+msgid "Configuration"
+msgstr "Configuració"
 
 msgctxt "model:ir.action,name:act_website_form"
 msgid "Web Sites"
@@ -571,6 +603,10 @@ msgctxt "model:ir.ui.menu,name:menu_galatea_configuration"
 msgid "Configuration"
 msgstr "Configuració"
 
+msgctxt "model:ir.ui.menu,name:menu_galatea_configuration_galatea"
+msgid "Galatea Configuration"
+msgstr "Configuració Galatea"
+
 msgctxt "model:ir.ui.menu,name:menu_galatea_static"
 msgid "Static"
 msgstr "Estàtic"
@@ -602,6 +638,10 @@ msgstr "Fitxer local"
 msgctxt "selection:galatea.static.file,type:"
 msgid "Remote File"
 msgstr "Fitxer remot"
+
+msgctxt "view:galatea.configuration:"
+msgid "Galatea Configuration"
+msgstr "Configuració Galatea"
 
 msgctxt "view:galatea.remove.cache.start:"
 msgid "Be careful this action do command system!"

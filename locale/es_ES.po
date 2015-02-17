@@ -85,6 +85,30 @@ msgid "Wrong connection to SMTP server. Not send email."
 msgstr ""
 "No se ha podido conectar al servidor SMTP. No se ha enviado el correo."
 
+msgctxt "field:galatea.configuration,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:galatea.configuration,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:galatea.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:galatea.configuration,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:galatea.configuration,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:galatea.configuration,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
 msgctxt "field:galatea.remove.cache.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -493,6 +517,10 @@ msgctxt "help:galatea.website,uri:"
 msgid "Base Uri Site (with \"/\")"
 msgstr "URI base del sitio web (con \"/\")"
 
+msgctxt "model:galatea.configuration,name:"
+msgid "Galatea Configuration"
+msgstr "Configuración Galatea"
+
 msgctxt "model:galatea.remove.cache.start,name:"
 msgid "Galatea Remove Cache Start"
 msgstr "Inicio eliminar cache Galatea"
@@ -532,6 +560,10 @@ msgstr "Países relacionados con el sitio web"
 msgctxt "model:galatea.website-currency.currency,name:"
 msgid "Currencies to be made available on website"
 msgstr "Monedas disponibles en este sitio web"
+
+msgctxt "model:ir.action,name:act_galatea_configuration_form"
+msgid "Configuration"
+msgstr "Configuración"
 
 msgctxt "model:ir.action,name:act_website_form"
 msgid "Web Sites"
@@ -573,6 +605,10 @@ msgctxt "model:ir.ui.menu,name:menu_galatea_configuration"
 msgid "Configuration"
 msgstr "Configuración"
 
+msgctxt "model:ir.ui.menu,name:menu_galatea_configuration_galatea"
+msgid "Galatea Configuration"
+msgstr "Configuración Galatea"
+
 msgctxt "model:ir.ui.menu,name:menu_galatea_static"
 msgid "Static"
 msgstr "Estático"
@@ -604,6 +640,10 @@ msgstr "Fichero local"
 msgctxt "selection:galatea.static.file,type:"
 msgid "Remote File"
 msgstr "Fichero remoto"
+
+msgctxt "view:galatea.configuration:"
+msgid "Galatea Configuration"
+msgstr "Configuración Galatea"
 
 msgctxt "view:galatea.remove.cache.start:"
 msgid "Be careful this action do command system!"
