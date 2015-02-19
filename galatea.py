@@ -93,7 +93,6 @@ class GalateaWebSite(ModelSQL, ModelView):
     @staticmethod
     def send_email(server, recipients, subject, body):
         Website = Pool().get('galatea.website')
-        SMTP = Pool().get('smtp.server')
 
         from_ = server.smtp_email
         if server.smtp_use_email:
@@ -108,9 +107,9 @@ class GalateaWebSite(ModelSQL, ModelView):
         msg['Message-ID'] = Utils.make_msgid()
 
         try:
-            server = SMTP.get_smtp_server(server)
-            server.sendmail(from_, recipients, msg.as_string())
-            server.quit()
+            smtp_server = server.get_smtp_server()
+            smtp_server.sendmail(from_, recipients, msg.as_string())
+            smtp_server.quit()
         except:
             Website.raise_user_error('smtp_error')
 
