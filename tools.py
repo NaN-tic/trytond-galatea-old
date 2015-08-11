@@ -8,8 +8,8 @@ import os
 try:
     import slug
 except ImportError:
-    logging.getLogger('product esale').error(
-            'Unable to import slug. Install slug package.')
+    logger = logging.getLogger(__name__)
+    logger.error('Unable to import slug. Install slug package.')
 
 IMAGE_TYPES = ['image/jpeg', 'image/png',  'image/gif']
 
