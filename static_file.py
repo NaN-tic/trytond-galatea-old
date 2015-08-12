@@ -7,7 +7,7 @@ from trytond.pyson import Eval, Not, Equal
 from trytond.transaction import Transaction
 from trytond.config import config
 from .tools import slugify, slugify_file
-
+import base64
 import os
 import urllib
 
@@ -166,7 +166,7 @@ class GalateaStaticFile(ModelSQL, ModelView):
         :param value: The value to set
         """
         if self.type == 'local':
-            file_binary = buffer(value)
+            file_binary = bytes(value)
             # If the folder does not exist, create it recursively
             directory = os.path.dirname(self.file_path)
             if not os.path.isdir(directory):
@@ -182,7 +182,7 @@ class GalateaStaticFile(ModelSQL, ModelView):
 
         :param files: Records
         :param name: Ignored
-        :param value: The file buffer
+        :param value: The file bytes
         """
         for static_file in files:
             static_file._set_file_binary(value)
@@ -190,17 +190,17 @@ class GalateaStaticFile(ModelSQL, ModelView):
     def get_file_binary(self, name):
         '''
         Getter for the binary_file field. This fetches the file from the
-        file system, coverts it to buffer and returns it.
+        file system, coverts it to bytes and returns it.
 
         :param name: Field name
-        :return: File buffer
+        :return: File bytes
         '''
         location = self.file_path if self.type == 'local' \
             else urllib.urlretrieve(self.remote_path)[0]
         if self.type == 'local' and not os.path.exists(location):
             return
         with open(location, 'rb') as file_reader:
-            return buffer(file_reader.read())
+            return fields.Binary.cast(file_reader.read())
 
     def get_file_path(self, name):
         """
