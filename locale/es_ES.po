@@ -155,7 +155,7 @@ msgstr "Directorio"
 
 msgctxt "field:galatea.static.file,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:galatea.static.file,name:"
 msgid "File Name"
