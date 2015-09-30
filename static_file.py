@@ -1,7 +1,7 @@
 # This file is part galatea module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields, Unique
 from trytond.pool import Pool
 from trytond.pyson import Eval, Not, Equal
 from trytond.transaction import Transaction
@@ -26,11 +26,12 @@ class GalateaStaticFolder(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(GalateaStaticFolder, cls).__setup__()
+        t = cls.__table__()
         cls._constraints += [
             ('check_name', 'invalid_name'),
         ]
         cls._sql_constraints += [
-            ('unique_folder', 'UNIQUE(name)',
+            ('unique_folder', Unique(t, t.name),
              'Folder name needs to be unique')
         ]
         cls._error_messages.update({
