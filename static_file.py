@@ -7,7 +7,6 @@ from trytond.pyson import Eval, Not, Equal
 from trytond.transaction import Transaction
 from trytond.config import config
 from .tools import slugify, slugify_file
-import base64
 import os
 import urllib
 
