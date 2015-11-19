@@ -77,16 +77,9 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="group" ref="group_galatea"/>
         </record>
 
-        <record id="galatea_user_form" model="ir.ui.view">
-            <field name="model">galatea.user</field>
-            <field name="type" eval="None"/>
-            <field name="inherit" ref="party.party_view_form"/>
-            <field name="name">galatea_user_form</field>
-        </record>
         <record model="ir.ui.view" id="galatea_user_form2">
             <field name="model">galatea.user</field>
             <field name="type">form</field>
-            <field name="priority">20</field>
             <field name="name">galatea_user_form2</field>
         </record>
         <record id="galatea_user_tree" model="ir.ui.view">
