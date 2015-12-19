@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -562,6 +562,10 @@ msgstr "Monedes disponibles en el lloc web"
 msgctxt "model:ir.action,name:act_galatea_configuration_form"
 msgid "Configuration"
 msgstr "Configuració"
+
+msgctxt "model:ir.action,name:act_galatea_user_form"
+msgid "Galatea Users"
+msgstr "Galatea Usuaris"
 
 msgctxt "model:ir.action,name:act_website_form"
 msgid "Web Sites"
