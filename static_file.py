@@ -26,9 +26,6 @@ class GalateaStaticFolder(ModelSQL, ModelView):
     def __setup__(cls):
         super(GalateaStaticFolder, cls).__setup__()
         t = cls.__table__()
-        cls._constraints += [
-            ('check_name', 'invalid_name'),
-        ]
         cls._sql_constraints += [
             ('unique_folder', Unique(t, t.name),
              'Folder name needs to be unique')
@@ -48,6 +45,12 @@ class GalateaStaticFolder(ModelSQL, ModelView):
         if self.name:
             return slugify(self.name)
 
+    @classmethod
+    def validate(cls, files):
+        for file_ in files:
+            file_.check_name()
+        super(GalateaStaticFolder, cls).validate(files)
+
     def check_name(self):
         '''
         Check the validity of folder name
@@ -55,8 +58,7 @@ class GalateaStaticFolder(ModelSQL, ModelView):
         eventually lead to previlege escalation
         '''
         if ('.' in self.name) or (self.name.startswith('/')):
-            return False
-        return True
+            self.raise_user_error('invalid_name')
 
     @classmethod
     def write(cls, folders, vals):
