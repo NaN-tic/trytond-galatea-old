@@ -17,7 +17,6 @@ class GalateaStaticFolder(ModelSQL, ModelView):
     "Static folder for Galatea"
     __name__ = "galatea.static.folder"
     name = fields.Char('Name', required=True,
-        on_change_with=['name'],
         help='Folder name contains az09 characters')
     description = fields.Char('Description', select=1)
     files = fields.One2Many('galatea.static.file', 'folder', 'Files')
@@ -38,6 +37,7 @@ class GalateaStaticFolder(ModelSQL, ModelView):
             'not_allow_copy': "Not allow to copy",
         })
 
+    @fields.depends('name')
     def on_change_with_name(self):
         """
         Slugified folder name
