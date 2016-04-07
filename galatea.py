@@ -3,8 +3,9 @@
 # the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateTransition, StateView, Button
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 from trytond.transaction import Transaction
+from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.config import config
 from email import Utils
 from email.header import Header
@@ -93,8 +94,6 @@ class GalateaWebSite(ModelSQL, ModelView):
 
     @staticmethod
     def send_email(server, recipients, subject, body):
-        Website = Pool().get('galatea.website')
-
         from_ = server.smtp_email
         if server.smtp_use_email:
             from_ = server.smtp_email
@@ -107,12 +106,9 @@ class GalateaWebSite(ModelSQL, ModelView):
         # msg['Date']     = Utils.formatdate(localtime = 1)
         msg['Message-ID'] = Utils.make_msgid()
 
-        try:
-            smtp_server = server.get_smtp_server()
-            smtp_server.sendmail(from_, recipients, msg.as_string())
-            smtp_server.quit()
-        except:
-            Website.raise_user_error('smtp_error')
+        datamanager = SMTPDataManager()
+        datamanager._server = server.get_smtp_server()
+        sendmail_transactional(from_, recipients, msg, datamanager=datamanager)
 
     @classmethod
     def cache_directories(cls, website):
