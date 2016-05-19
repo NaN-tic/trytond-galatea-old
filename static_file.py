@@ -197,10 +197,16 @@ class GalateaStaticFile(ModelSQL, ModelView):
         :param name: Field name
         :return: File bytes
         '''
-        location = self.file_path if self.type == 'local' \
-            else urllib.urlretrieve(self.remote_path)[0]
-        if self.type == 'local' and not os.path.exists(location):
-            return
+        if self.type == 'local':
+            location = self.file_path
+            if not os.path.exists(location):
+                return
+        else:
+            try:
+                location = urllib.urlretrieve(self.remote_path)[0]
+            except:
+                return
+
         with open(location, 'rb') as file_reader:
             return fields.Binary.cast(file_reader.read())
 
@@ -228,7 +234,6 @@ class GalateaStaticFile(ModelSQL, ModelView):
 
         <Tryton Data Path>/<Database Name>/galatea
         """
-        cursor = Transaction().connection.cursor()
         return os.path.join(
-            config.get('database', 'path'), cursor.database_name, "galatea"
+            config.get('database', 'path'), Transaction().database.name, "galatea"
         )
