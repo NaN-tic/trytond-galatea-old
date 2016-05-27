@@ -233,6 +233,11 @@ class GalateaUser(ModelSQL, ModelView):
         "Flask signal to logout"
         return
 
+    @classmethod
+    def signal_registration(cls, user, data=None, website=None):
+        "Flask signal to registration"
+        return
+
 
 class GalateaUserWebSite(ModelSQL):
     'Galatea User - Website'
