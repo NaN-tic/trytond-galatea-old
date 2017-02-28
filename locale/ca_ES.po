@@ -468,6 +468,14 @@ msgctxt "field:ir.attachment,allow_galatea:"
 msgid "Allow Galatea"
 msgstr "Disponible Galatea"
 
+msgctxt "field:ir.attachment,galatea_party:"
+msgid "Galatea Party"
+msgstr "Tercer Galatea"
+
+msgctxt "field:ir.attachment,galatea_session:"
+msgid "Galatea Session"
+msgstr "Sessió Galatea"
+
 msgctxt "field:party.party,galatea_users:"
 msgid "Galatea Users"
 msgstr "Galatea Usuaris"
@@ -518,6 +526,14 @@ msgstr "Flask Static directori"
 msgctxt "help:galatea.website,uri:"
 msgid "Base Uri Site (with \"/\")"
 msgstr "Base Uri del lloc web (amb \"/\")"
+
+msgctxt "help:ir.attachment,galatea_party:"
+msgid "Allow attachment to party (login user)"
+msgstr "Disponible adjunt per tercer (usuari identificat)"
+
+msgctxt "help:ir.attachment,galatea_session:"
+msgid "Allow attachment to login users"
+msgstr "Disponible adjunt als usuaris identificats"
 
 msgctxt "model:galatea.configuration,name:"
 msgid "Galatea Configuration"
