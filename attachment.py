@@ -11,3 +11,7 @@ class Attachment:
     __name__ = 'ir.attachment'
     __metaclass__ = PoolMeta
     allow_galatea = fields.Boolean('Allow Galatea', select=True)
+    galatea_session = fields.Boolean('Galatea Session',
+        help='Allow attachment to login users')
+    galatea_party = fields.Boolean('Galatea Party',
+        help='Allow attachment to party (login user)')
