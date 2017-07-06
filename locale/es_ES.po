@@ -326,8 +326,8 @@ msgid "Company"
 msgstr "Empresa"
 
 msgctxt "field:galatea.website,countries:"
-msgid "Countries Available"
-msgstr "Países disponibles"
+msgid "Countries"
+msgstr "Países"
 
 msgctxt "field:galatea.website,country:"
 msgid "Country"
@@ -716,6 +716,10 @@ msgstr "Paises"
 msgctxt "view:galatea.website:"
 msgid "Email"
 msgstr "Email"
+
+msgctxt "view:galatea.website:"
+msgid "Languages"
+msgstr "Idiomas"
 
 msgctxt "view:galatea.website:"
 msgid "Remove Cache"
