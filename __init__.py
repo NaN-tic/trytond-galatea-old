@@ -17,6 +17,7 @@ def register():
         Configuration,
         GalateaWebSite,
         GalateaWebsiteCountry,
+        GalateaWebsiteLang,
         GalateaWebsiteCurrency,
         GalateaUser,
         GalateaUserWebSite,
