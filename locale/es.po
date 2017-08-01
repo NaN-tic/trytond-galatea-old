@@ -26,7 +26,7 @@ msgstr ""
 "%s\n"
 "\n"
 "Elimine este correo.\n"
-"No responga a este correo. Se ha generado automáticamente."
+"No responda a este correo. Se ha generado automáticamente."
 
 msgctxt "error:galatea.send.password:"
 msgid "Send new password to %s"
