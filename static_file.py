@@ -235,5 +235,5 @@ class GalateaStaticFile(ModelSQL, ModelView):
         <Tryton Data Path>/<Database Name>/galatea
         """
         return os.path.join(
-            config.get('database', 'path'), Transaction().database.name, "galatea"
-        )
+            config.get('database', 'path'), Transaction().database.name,
+                "galatea")

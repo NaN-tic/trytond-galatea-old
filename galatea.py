@@ -56,7 +56,7 @@ class GalateaWebSite(ModelSQL, ModelView):
     smtp_server = fields.Many2One('smtp.server', 'SMTP Server',
         domain=[('state', '=', 'done')], required=True)
     metadescription = fields.Char('Meta Description', translate=True,
-            help='Almost all search engines recommend it to be shorter ' \
+        help='Almost all search engines recommend it to be shorter '
             'than 155 characters of plain text')
     metakeyword = fields.Char('Meta Keyword', translate=True)
     metatitle = fields.Char('Meta Title', translate=True)
@@ -167,7 +167,7 @@ class GalateaUser(ModelSQL, ModelView):
         )
     manager = fields.Boolean('Manager', help='Allow user in manager sections')
     active = fields.Boolean('Active', help='Allow login users')
-    websites = fields.Many2Many('galatea.user-galatea.website', 
+    websites = fields.Many2Many('galatea.user-galatea.website',
         'user', 'website', 'Websites',
         help='Users will be available in those websites to login')
 
@@ -186,7 +186,7 @@ class GalateaUser(ModelSQL, ModelView):
     @staticmethod
     def default_websites():
         Website = Pool().get('galatea.website')
-        return [p.id for p in Website.search([('registration','=',True)])]
+        return [p.id for p in Website.search([('registration', '=', True)])]
 
     @classmethod
     def __setup__(cls):
@@ -229,7 +229,8 @@ class GalateaUser(ModelSQL, ModelView):
     @classmethod
     def write(cls, users, values):
         "Update salt before saving"
-        return super(GalateaUser, cls).write(users, cls._convert_values(values))
+        return super(GalateaUser, cls).write(users,
+            cls._convert_values(values))
 
     @classmethod
     def signal_login(cls, user, session=None, website=None):
@@ -251,16 +252,15 @@ class GalateaUserWebSite(ModelSQL):
     'Galatea User - Website'
     __name__ = 'galatea.user-galatea.website'
     _table = 'galatea_user_galatea_website'
-    user = fields.Many2One('galatea.user', 'User', ondelete='CASCADE',
-            select=True, required=True)
-    website = fields.Many2One('galatea.website', 'Website', ondelete='RESTRICT',
-            select=True, required=True)
+    user = fields.Many2One('galatea.user', 'User',
+        ondelete='CASCADE', select=True, required=True)
+    website = fields.Many2One('galatea.website', 'Website',
+        ondelete='RESTRICT', select=True, required=True)
 
 
 class GalateaRemoveCacheStart(ModelView):
     'Galatea Remove Cache Start'
     __name__ = 'galatea.remove.cache.start'
-
 
 
 class GalateaRemoveCache(Wizard):
@@ -338,14 +338,14 @@ class GalateaSendPassword(Wizard):
     def __setup__(cls):
         super(GalateaSendPassword, cls).__setup__()
         cls._error_messages.update({
-                'send_info': 'Send new password to %s',
-                'email_subject': '%s. New password reset',
-                'email_text': 'Hello %s\n' \
-                    'New password reset for your user account %s: %s\n\n' \
-                    '%s\n\n' \
-                    'You could drop this email.\n' \
-                    'Don\'t repply this email. It\'s was generated automatically'
-                })
+            'send_info': 'Send new password to %s',
+            'email_subject': '%s. New password reset',
+            'email_text': 'Hello %s\n'
+                'New password reset for your user account %s: %s\n\n'
+                '%s\n\n'
+                'You could drop this email.\n'
+                'Don\'t repply this email. It\'s was generated automatically'
+            })
 
     def transition_send(self):
         pool = Pool()
@@ -367,6 +367,7 @@ class GalateaSendPassword(Wizard):
                 lang = user.party.lang.code
             else:
                 lang = User(Transaction().user).language.code
+
             with Transaction().set_context(language=lang):
                 subject = self.raise_user_error('email_subject',
                     (website.name),

@@ -11,6 +11,7 @@ from .sale import *
 from .invoice import *
 from .project import *
 
+
 def register():
     Pool.register(
         Attachment,
