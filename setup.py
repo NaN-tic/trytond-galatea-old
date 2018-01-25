@@ -12,7 +12,11 @@ try:
 except ImportError:
     from ConfigParser import ConfigParser
 
-MODULE2PREFIX = {}
+MODULE = 'galatea'
+PREFIX = 'trytonzz'
+MODULE2PREFIX = {
+    'smtp': 'trytonspain',
+    }
 
 
 def read(fname):
@@ -30,7 +34,6 @@ def get_require_version(name):
         major_version, minor_version + 1)
     return require
 
-
 config = ConfigParser()
 config.readfp(open('tryton.cfg'))
 info = dict(config.items('tryton'))
@@ -41,10 +44,8 @@ version = info.get('version', '0.0.1')
 major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
-name = 'trytonzz_galatea'
-download_url = 'https://bitbucket.org/zikzakmedia/trytond-galatea'
 
-requires = []
+requires = ['Fabric', 'Flask-Login', 'pytz']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         prefix = MODULE2PREFIX.get(dep, 'trytond')
@@ -52,29 +53,38 @@ for dep in info.get('depends', []):
 requires.append(get_require_version('trytond'))
 
 tests_require = []
-dependency_links = []
+series = '%s.%s' % (major_version, minor_version)
+if minor_version % 2:
+    branch = 'default'
+else:
+    branch = series
+dependency_links = [
+    ('hg+https://bitbucket.org/trytonspain/'
+        'trytond-smtp@%(branch)s'
+        '#egg=trytonspain-smtp-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ]
 if minor_version % 2:
     # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
 
-setup(name=name,
+setup(name='%s_%s' % (PREFIX, MODULE),
     version=version,
-    description='Tryton Galatea Module',
-    long_description=read('README'),
+    description='Tryton module Galatea Flask',
     author='Zikzakmedia SL',
     author_email='zikzak@zikzakmedia.com',
-    url='https://bitbucket.org/zikzakmedia/',
-    download_url=download_url,
-    keywords='',
-    package_dir={'trytond.modules.galatea': '.'},
+    url='http://www.zikzakmedia.com',
+    download_url="https://bitbucket.org/zikzakmedia/trytond-%s" % MODULE,
+    package_dir={'trytond.modules.%s' % MODULE: '.'},
     packages=[
-        'trytond.modules.galatea',
-        'trytond.modules.galatea.tests',
+        'trytond.modules.%s' % MODULE,
+        'trytond.modules.%s.tests' % MODULE,
         ],
     package_data={
-        'trytond.modules.galatea': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
-                'icons/*.svg', 'tests/*.rst']),
+        'trytond.modules.%s' % MODULE: (info.get('xml', [])
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -83,25 +93,12 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
+        'Intended Audience :: Manufacturing',
         'License :: OSI Approved :: GNU General Public License (GPL)',
-        'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
-        'Natural Language :: Czech',
-        'Natural Language :: Dutch',
-        'Natural Language :: English',
-        'Natural Language :: French',
-        'Natural Language :: German',
-        'Natural Language :: Hungarian',
-        'Natural Language :: Italian',
-        'Natural Language :: Portuguese (Brazilian)',
-        'Natural Language :: Russian',
-        'Natural Language :: Slovenian',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Office/Business',
@@ -112,8 +109,8 @@ setup(name=name,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    galatea = trytond.modules.galatea
-    """,
+    %s = trytond.modules.%s
+    """ % (MODULE, MODULE),
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,

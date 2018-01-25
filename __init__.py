@@ -2,37 +2,37 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 from trytond.pool import Pool
-from .attachment import *
-from .galatea import *
-from .configuration import *
-from .static_file import *
-from .party import *
-from .sale import *
-from .invoice import *
-from .project import *
+from . import attachment
+from . import galatea
+from . import configuration
+from . import static_file
+from . import party
+from . import sale
+from . import invoice
+from . import project
 
 
 def register():
     Pool.register(
-        Attachment,
-        Configuration,
-        GalateaWebSite,
-        GalateaWebsiteCountry,
-        GalateaWebsiteLang,
-        GalateaWebsiteCurrency,
-        GalateaUser,
-        GalateaUserWebSite,
-        GalateaRemoveCacheStart,
-        GalateaSendPasswordStart,
-        GalateaSendPasswordResult,
-        GalateaStaticFolder,
-        GalateaStaticFile,
-        Party,
-        Sale,
-        Invoice,
-        Work,
+        attachment.Attachment,
+        configuration.Configuration,
+        galatea.GalateaWebSite,
+        galatea.GalateaWebsiteCountry,
+        galatea.GalateaWebsiteLang,
+        galatea.GalateaWebsiteCurrency,
+        galatea.GalateaUser,
+        galatea.GalateaUserWebSite,
+        galatea.GalateaRemoveCacheStart,
+        galatea.GalateaSendPasswordStart,
+        galatea.GalateaSendPasswordResult,
+        static_file.GalateaStaticFolder,
+        static_file.GalateaStaticFile,
+        party.Party,
+        sale.Sale,
+        invoice.Invoice,
+        project.Work,
         module='galatea', type_='model')
     Pool.register(
-        GalateaRemoveCache,
-        GalateaSendPassword,
+        galatea.GalateaRemoveCache,
+        galatea.GalateaSendPassword,
         module='galatea', type_='wizard')

@@ -7,7 +7,7 @@ from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.config import config
-from email import Utils
+from email.utils import make_msgid
 from email.header import Header
 from email.mime.text import MIMEText
 from fabric.api import env as fenv, sudo as fsudo
@@ -70,8 +70,8 @@ class GalateaWebSite(ModelSQL, ModelView):
                 'Another site with the same name already exists!')
             ]
         cls._error_messages.update({
-                'smtp_error': 'Wrong connection to SMTP server. '
-                        'Not send email.',
+                'smtp_error': ('Wrong connection to SMTP server. '
+                        'Not send email.'),
                 })
         cls._buttons.update({
                 'remove_cache': {},
@@ -104,8 +104,7 @@ class GalateaWebSite(ModelSQL, ModelView):
         msg['From'] = from_
         msg['To'] = ', '.join(recipients)
         msg['Reply-to'] = server.smtp_email
-        # msg['Date']     = Utils.formatdate(localtime = 1)
-        msg['Message-ID'] = Utils.make_msgid()
+        msg['Message-ID'] = make_msgid()
 
         datamanager = SMTPDataManager()
         datamanager._server = server.get_smtp_server()
@@ -229,8 +228,8 @@ class GalateaUser(ModelSQL, ModelView):
     @classmethod
     def write(cls, users, values):
         "Update salt before saving"
-        return super(GalateaUser, cls).write(users,
-            cls._convert_values(values))
+        values = cls._convert_values(values)
+        return super(GalateaUser, cls).write(users, values)
 
     @classmethod
     def signal_login(cls, user, session=None, website=None):
@@ -340,11 +339,11 @@ class GalateaSendPassword(Wizard):
         cls._error_messages.update({
             'send_info': 'Send new password to %s',
             'email_subject': '%s. New password reset',
-            'email_text': 'Hello %s\n'
+            'email_text': ('Hello %s\n'
                 'New password reset for your user account %s: %s\n\n'
                 '%s\n\n'
                 'You could drop this email.\n'
-                'Don\'t repply this email. It\'s was generated automatically'
+                'Don\'t repply this email. It\'s was generated automatically')
             })
 
     def transition_send(self):
@@ -373,7 +372,10 @@ class GalateaSendPassword(Wizard):
                     (website.name),
                     raise_exception=False)
                 body = self.raise_user_error('email_text',
-                    (user.display_name, user.email, password, "\n".join(sites)),
+                    (user.display_name,
+                        user.email,
+                        password,
+                        "\n".join(sites)),
                     raise_exception=False)
 
             Website.send_email(website.smtp_server, recipients, subject, body)
