@@ -99,7 +99,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         </record>
         <record model="ir.action.act_window.view" id="act_galatea_user_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="galatea_user_form2"/>
+            <field name="view" ref="galatea_user_form"/>
             <field name="act_window" ref="action_galatea_user_view"/>
         </record>
 
