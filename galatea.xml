@@ -77,12 +77,12 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="group" ref="group_galatea"/>
         </record>
 
-        <record model="ir.ui.view" id="galatea_user_form2">
+        <record model="ir.ui.view" id="galatea_user_form">
             <field name="model">galatea.user</field>
             <field name="type">form</field>
-            <field name="name">galatea_user_form2</field>
+            <field name="name">galatea_user_form</field>
         </record>
-        <record id="galatea_user_tree" model="ir.ui.view">
+        <record model="ir.ui.view" id="galatea_user_tree">
             <field name="model">galatea.user</field>
             <field name="type">tree</field>
             <field name="name">galatea_user_tree</field>
