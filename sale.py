@@ -7,7 +7,6 @@ from trytond.model import fields
 __all__ = ['Sale']
 
 
-class Sale:
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
-    __metaclass__ = PoolMeta
     attachments = fields.One2Many('ir.attachment', 'resource', 'Attachments')

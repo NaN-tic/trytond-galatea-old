@@ -28,9 +28,18 @@ def register():
         static_file.GalateaStaticFolder,
         static_file.GalateaStaticFile,
         party.Party,
+        module='galatea', type_='model')
+    Pool.register(
         sale.Sale,
+        depends=['sale'],
+        module='galatea', type_='model')
+    Pool.register(
         invoice.Invoice,
+        depends=['account_invoice'],
+        module='galatea', type_='model')
+    Pool.register(
         project.Work,
+        depends=['project'],
         module='galatea', type_='model')
     Pool.register(
         galatea.GalateaRemoveCache,

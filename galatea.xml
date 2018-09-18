@@ -142,6 +142,18 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="model">galatea.website</field>
         </record>
 
+        <!-- Buttons -->
+        <record model="ir.model.button" id="remove_cache_button">
+            <field name="name">remove_cache</field>
+            <field name="string">Remove Cache</field>
+            <field name="model" search="[('model', '=', 'galatea.website')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="remove_cache_button_group_account">
+            <field name="button" ref="remove_cache_button"/>
+            <field name="group" ref="group_galatea_admin"/>
+        </record>
+
         <!-- Access -->
         <record model="ir.model.access" id="access_galatea_website">
             <field name="model" search="[('model', '=', 'galatea.website')]"/>
@@ -183,13 +195,13 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <record model="ir.model.access" id="access_galatea_party_party">
+        <!-- <record model="ir.model.access" id="access_galatea_party_party">
             <field name="model" search="[('model', '=', 'party.party')]"/>
             <field name="group" ref="group_galatea"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="False"/>
-        </record>
+        </record> -->
     </data>
 </tryton>

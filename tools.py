@@ -59,8 +59,8 @@ def thumbly(directory, filename, data, size=300, crop=False):
     :param crop: crop thumb image
     '''
     if not os.path.isdir(directory):
-        os.makedirs(directory, 0775)
-    os.umask(0022)
+        os.makedirs(directory, 0o775)
+    os.umask(0o022)
     with open(filename, 'wb') as file_p:
         file_p.write(data)
 

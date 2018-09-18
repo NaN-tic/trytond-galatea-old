@@ -172,8 +172,8 @@ class GalateaStaticFile(ModelSQL, ModelView):
             # If the folder does not exist, create it recursively
             directory = os.path.dirname(self.file_path)
             if not os.path.isdir(directory):
-                os.makedirs(directory, 0775)
-            os.umask(0022)
+                os.makedirs(directory, 0o775)
+            os.umask(0o022)
             with open(self.file_path, 'wb') as file_writer:
                 file_writer.write(file_binary)
 
