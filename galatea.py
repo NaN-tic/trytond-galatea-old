@@ -10,6 +10,7 @@ from trytond.config import config
 from email.utils import make_msgid
 from email.header import Header
 from email.mime.text import MIMEText
+from flask_login import UserMixin
 import subprocess
 import pytz
 import random
@@ -143,7 +144,7 @@ class GalateaWebsiteCurrency(ModelSQL):
         ondelete='CASCADE', select=1, required=True)
 
 
-class GalateaUser(ModelSQL, ModelView):
+class GalateaUser(ModelSQL, ModelView, UserMixin):
     """Galatea Users"""
     __name__ = "galatea.user"
     _rec_name = 'display_name'
@@ -235,6 +236,19 @@ class GalateaUser(ModelSQL, ModelView):
     def signal_registration(cls, user, data=None, website=None):
         "Flask signal to registration"
         return
+
+    @classmethod
+    def _get_user_domain(cls, website, request):
+        return [
+            ('email', '=', request.form.get('email')),
+            ('active', '=', True),
+            ('websites', 'in', [website]),
+            ]
+
+    @classmethod
+    def get_user(cls, website, request):
+        domain = cls._get_user_domain(website, request)
+        return cls.search(domain, limit=1)
 
 
 class GalateaUserWebSite(ModelSQL):
