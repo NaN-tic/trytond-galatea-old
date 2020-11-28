@@ -6,7 +6,8 @@ from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
-from trytond.config import config
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 from email.utils import make_msgid
 from email.header import Header
 from email.mime.text import MIMEText
@@ -17,6 +18,7 @@ import random
 import string
 import hashlib
 import os
+import secrets
 
 __all__ = ['GalateaWebSite', 'GalateaWebsiteCountry', 'GalateaWebsiteLang',
     'GalateaWebsiteCurrency', 'GalateaUser', 'GalateaUserWebSite',
@@ -65,10 +67,6 @@ class GalateaWebSite(ModelSQL, ModelView):
             ('name_uniq', Unique(t, t.name),
                 'Another site with the same name already exists!')
             ]
-        cls._error_messages.update({
-                'smtp_error': ('Wrong connection to SMTP server. '
-                        'Not send email.'),
-                })
         cls._buttons.update({
                 'remove_cache': {},
                 })
@@ -250,6 +248,51 @@ class GalateaUser(ModelSQL, ModelView, UserMixin):
         domain = cls._get_user_domain(website, request)
         return cls.search(domain, limit=1)
 
+    @classmethod
+    def random_password(cls):
+        alphabet = string.ascii_letters + string.digits
+        return ''.join(secrets.choice(alphabet) for i in range(20))
+
+    @classmethod
+    def reset_password(cls, users, send_email=True):
+        pool = Pool()
+        Website = pool.get('galatea.website')
+        User = pool.get('res.user')
+        GalateaUser = pool.get('galatea.user')
+
+        to_write = []
+        for user in users:
+            password = cls.random_password()
+            recipients = [user.email]
+
+            if not user.websites:
+                raise UserError(gettext('galatea.msg_missing_user_site',
+                    user=user.rec_name))
+
+            if user.party.lang:
+                lang = user.party.lang.code
+            else:
+                ruser = User(Transaction().user)
+                lang = ruser.language and ruser.language.code or 'en'
+
+            with Transaction().set_context(language=lang):
+                subject = gettext('galatea.msg_email_subject',
+                    website=" ".join([w.name for w in user.websites]))
+                body = gettext('galatea.msg_email_text',
+                    name=user.display_name,
+                    email=user.email,
+                    password=password,
+                    websites="\n".join([w.uri for w in user.websites]))
+
+            if send_email and user.websites:
+                smtp_server = user.websites[0].smtp_server
+                Website.send_email(smtp_server, recipients, subject, body)
+
+            to_write.extend(([user], {'password': password}))
+
+        if to_write:
+            GalateaUser.write(*to_write)
+
 
 class GalateaUserWebSite(ModelSQL):
     'Galatea User - Website'
@@ -276,19 +319,9 @@ class GalateaRemoveCache(Wizard):
             ])
     remove = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(GalateaRemoveCache, cls).__setup__()
-        cls._error_messages.update({
-            'not_dir_exist': 'Directory "%s" not exist.',
-        })
-
     def transition_remove(self):
         pool = Pool()
         Website = pool.get('galatea.website')
-
-        fenv.host_string = config.get('galatea', 'host')
-        fenv.password = config.get('galatea', 'password')
 
         websites = Website.browse(Transaction().context['active_ids'])
 
@@ -296,10 +329,12 @@ class GalateaRemoveCache(Wizard):
             cache_directories = Website.cache_directories(website)
             for directory in cache_directories:
                 if os.path.exists(directory):
-                    process = subprocess.Popen("rm -rf %s/*" % directory)
+                    process = subprocess.Popen(
+                        'rm -rf %s/*' % directory, shell=True)
                     output, err = process.communicate()
                 else:
-                    self.raise_user_error('not_dir_exist', directory)
+                    raise UserError(gettext('galatea.msg_not_dir_exist',
+                        directory=directory))
         return 'end'
 
 
@@ -338,58 +373,15 @@ class GalateaSendPassword(Wizard):
             Button('Close', 'end', 'tryton-close'),
             ])
 
-    @classmethod
-    def __setup__(cls):
-        super(GalateaSendPassword, cls).__setup__()
-        cls._error_messages.update({
-            'send_info': 'Send new password to %s',
-            'email_subject': '%s. New password reset',
-            'email_text': ('Hello %s\n'
-                'New password reset for your user account %s: %s\n\n'
-                '%s\n\n'
-                'You could drop this email.\n'
-                'Don\'t repply this email. It\'s was generated automatically')
-            })
-
     def transition_send(self):
-        pool = Pool()
-        Website = pool.get('galatea.website')
-        User = pool.get('res.user')
-        GalateaUser = pool.get('galatea.user')
-
-        password = self.start.password
-        website = self.start.website
+        GalateaUser = Pool().get('galatea.user')
 
         users = GalateaUser.browse(Transaction().context['active_ids'])
 
-        for user in users:
-            recipients = [user.email]
-            sites = []
-            for site in user.websites:
-                sites.append(site.uri)
-            if user.party.lang:
-                lang = user.party.lang.code
-            else:
-                lang = User(Transaction().user).language.code
+        GalateaUser.reset_password(users)
 
-            with Transaction().set_context(language=lang):
-                subject = self.raise_user_error('email_subject',
-                    (website.name),
-                    raise_exception=False)
-                body = self.raise_user_error('email_text',
-                    (user.display_name,
-                        user.email,
-                        password,
-                        "\n".join(sites)),
-                    raise_exception=False)
-
-            Website.send_email(website.smtp_server, recipients, subject, body)
-
-        GalateaUser.write(users, {'password': password})
-
-        self.result.info = self.raise_user_error('send_info',
-                (','.join(str(u.email) for u in users)),
-                raise_exception=False)
+        self.result.info = gettext('galatea.msg_send_info',
+                email=','.join(str(u.email) for u in users))
         return 'result'
 
     def default_result(self, fields):

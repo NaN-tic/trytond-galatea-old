@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+      <record model="ir.message" id="msg_not_dir_exist">
+          <field name="text">Directory "%(directory)s" not exist.</field>
+      </record>
+      <record model="ir.message" id="msg_send_info">
+          <field name="text">Send new password to %(email)s.</field>
+      </record>
+      <record model="ir.message" id="msg_email_subject">
+          <field name="text">%(website)s. New password reset</field>
+      </record>
+      <record model="ir.message" id="msg_email_text">
+          <field name="text">Hello %(name)s New password reset for your user account %(email)s: %(password)s %(websites)s You could drop this email. Don't repply this email. It's was generated automatically</field>
+      </record>
+      <record model="ir.message" id="msg_invalid_name">
+          <field name="text">Invalid folder name: (1) '.' in folder name (OR) (2) folder name begins with '/'</field>
+      </record>
+      <record model="ir.message" id="msg_folder_cannot_change">
+          <field name="text">Folder name cannot be changed.</field>
+      </record>
+      <record model="ir.message" id="msg_not_allow_copy">
+          <field name="text">Not allow to copy.</field>
+      </record>
+      <record model="ir.message" id="msg_invalid_file_name">
+          <field name="text">Invalid file name: (1) '..' in file name (OR) (2) file name contains '/'</field>
+      </record>
+      <record model="ir.message" id="msg_change_file_name">
+          <field name="text">You can't change file name.</field>
+      </record>
+      <record model="ir.message" id="msg_missing_user_site">
+          <field name="text">Missing site in the "%(user)s" user.</field>
+      </record>
+    </data>
+</tryton>
