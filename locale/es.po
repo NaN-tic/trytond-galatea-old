@@ -2,128 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:galatea.remove.cache:"
-msgid "Directory \"%s\" not exist."
-msgstr "El directorio \"%s\" no existe."
-
-msgctxt "error:galatea.send.password:"
-msgid "%s. New password reset"
-msgstr "%s. Nueva contraseña"
-
-msgctxt "error:galatea.send.password:"
-msgid ""
-"Hello %s\n"
-"New password reset for your user account %s: %s\n"
-"\n"
-"%s\n"
-"\n"
-"You could drop this email.\n"
-"Don't repply this email. It's was generated automatically"
-msgstr ""
-"Hola %s\n"
-"Una nueva contraseña se ha añadido al usuario %s: %s\n"
-"\n"
-"%s\n"
-"\n"
-"Elimine este correo.\n"
-"No responda a este correo. Se ha generado automáticamente."
-
-msgctxt "error:galatea.send.password:"
-msgid "Send new password to %s"
-msgstr "Enviado nueva contraseña a %s"
-
-msgctxt "error:galatea.static.file:"
-msgid ""
-"Invalid file name:\n"
-"                (1) '..' in file name (OR)\n"
-"                (2) file name contains '/'"
-msgstr ""
-"Nombre fichero incorrecto:\n"
-"                (1) '..' en el nombre (o bien)\n"
-"                (2) contiene el carácter '/'"
-
-msgctxt "error:galatea.static.file:"
-msgid "Not allow to change file name"
-msgstr "No puede cambiar de nombre a un fichero."
-
-msgctxt "error:galatea.static.file:"
-msgid "Not allow to copy"
-msgstr "No está disponible la acción de copiar."
-
-msgctxt "error:galatea.static.folder:"
-msgid "Folder name needs to be unique"
-msgstr "El nombre del directorio debe ser único"
-
-msgctxt "error:galatea.static.folder:"
-msgid ""
-"Invalid folder name:\n"
-"                (1) '.' in folder name (OR)\n"
-"                (2) folder name begins with '/'"
-msgstr ""
-"Nombre directorio incorrecto:\n"
-"                (1) '..' en el nombre (o bien)\n"
-"                (2) contiene el carácter '/'"
-
-msgctxt "error:galatea.static.folder:"
-msgid "Not allow to change folder name"
-msgstr "No puede cambiar de nombre a un directorio."
-
-msgctxt "error:galatea.static.folder:"
-msgid "Not allow to copy"
-msgstr "No está disponible la acción de copiar."
-
-msgctxt "error:galatea.user:"
-msgid "Email must be unique in a company"
-msgstr "El correo debe ser único en la empresa"
-
-msgctxt "error:galatea.website:"
-msgid "Another site with the same name already exists!"
-msgstr "Otro sitio web con el mismo nombre ya existe."
-
-msgctxt "error:galatea.website:"
-msgid "Wrong connection to SMTP server. Not send email."
-msgstr ""
-"No se ha podido conectar al servidor SMTP. No se ha enviado el correo."
-
-msgctxt "field:galatea.configuration,create_date:"
-msgid "Create Date"
-msgstr "Fecha creación"
-
-msgctxt "field:galatea.configuration,create_uid:"
-msgid "Create User"
-msgstr "Usuario creación"
-
-msgctxt "field:galatea.configuration,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:galatea.configuration,rec_name:"
-msgid "Name"
-msgstr "Nombre"
-
-msgctxt "field:galatea.configuration,write_date:"
-msgid "Write Date"
-msgstr "Fecha modificación"
-
-msgctxt "field:galatea.configuration,write_uid:"
-msgid "Write User"
-msgstr "Usuario modificación"
-
-msgctxt "field:galatea.remove.cache.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:galatea.send.password.result,id:"
-msgid "ID"
-msgstr "ID"
+msgctxt "field:account.invoice,attachments:"
+msgid "Attachments"
+msgstr "Adjuntos"
 
 msgctxt "field:galatea.send.password.result,info:"
 msgid "Info"
 msgstr "Info"
-
-msgctxt "field:galatea.send.password.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:galatea.send.password.start,password:"
 msgid "Password"
@@ -132,14 +17,6 @@ msgstr "Contraseña"
 msgctxt "field:galatea.send.password.start,website:"
 msgid "Website"
 msgstr "Sitio web"
-
-msgctxt "field:galatea.static.file,create_date:"
-msgid "Create Date"
-msgstr "Fecha creación"
-
-msgctxt "field:galatea.static.file,create_uid:"
-msgid "Create User"
-msgstr "Usuario creación"
 
 msgctxt "field:galatea.static.file,file_binary:"
 msgid "File"
@@ -153,17 +30,9 @@ msgctxt "field:galatea.static.file,folder:"
 msgid "Folder"
 msgstr "Directorio"
 
-msgctxt "field:galatea.static.file,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:galatea.static.file,name:"
 msgid "File Name"
 msgstr "Nombre fichero"
-
-msgctxt "field:galatea.static.file,rec_name:"
-msgid "Name"
-msgstr "Nombre"
 
 msgctxt "field:galatea.static.file,remote_path:"
 msgid "Remote File"
@@ -173,21 +42,9 @@ msgctxt "field:galatea.static.file,type:"
 msgid "File Type"
 msgstr "Tipo fichero"
 
-msgctxt "field:galatea.static.file,write_date:"
-msgid "Write Date"
-msgstr "Fecha modificación"
-
-msgctxt "field:galatea.static.file,write_uid:"
-msgid "Write User"
-msgstr "Usuario modificación"
-
-msgctxt "field:galatea.static.folder,create_date:"
-msgid "Create Date"
-msgstr "Fecha creación"
-
-msgctxt "field:galatea.static.folder,create_uid:"
-msgid "Create User"
-msgstr "Usuario creación"
+msgctxt "field:galatea.static.file,url:"
+msgid "URL"
+msgstr "URL"
 
 msgctxt "field:galatea.static.folder,description:"
 msgid "Description"
@@ -197,25 +54,9 @@ msgctxt "field:galatea.static.folder,files:"
 msgid "Files"
 msgstr "Ficheros"
 
-msgctxt "field:galatea.static.folder,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:galatea.static.folder,name:"
 msgid "Name"
 msgstr "Nombre"
-
-msgctxt "field:galatea.static.folder,rec_name:"
-msgid "Name"
-msgstr "Nombre"
-
-msgctxt "field:galatea.static.folder,write_date:"
-msgid "Write Date"
-msgstr "Fecha modificación"
-
-msgctxt "field:galatea.static.folder,write_uid:"
-msgid "Write User"
-msgstr "Usuario modificación"
 
 msgctxt "field:galatea.user,activation_code:"
 msgid "Unique Activation Code"
@@ -229,14 +70,6 @@ msgctxt "field:galatea.user,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:galatea.user,create_date:"
-msgid "Create Date"
-msgstr "Fecha creación"
-
-msgctxt "field:galatea.user,create_uid:"
-msgid "Create User"
-msgstr "Usuario creación"
-
 msgctxt "field:galatea.user,display_name:"
 msgid "Display Name"
 msgstr "Mostrar nombre"
@@ -244,10 +77,6 @@ msgstr "Mostrar nombre"
 msgctxt "field:galatea.user,email:"
 msgid "e-Mail"
 msgstr "e-Mail"
-
-msgctxt "field:galatea.user,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:galatea.user,manager:"
 msgid "Manager"
@@ -261,10 +90,6 @@ msgctxt "field:galatea.user,password:"
 msgid "Password"
 msgstr "Contraseña"
 
-msgctxt "field:galatea.user,rec_name:"
-msgid "Name"
-msgstr "Nombre"
-
 msgctxt "field:galatea.user,salt:"
 msgid "Salt"
 msgstr "Salt"
@@ -277,30 +102,6 @@ msgctxt "field:galatea.user,websites:"
 msgid "Websites"
 msgstr "Sitios web"
 
-msgctxt "field:galatea.user,write_date:"
-msgid "Write Date"
-msgstr "Fecha modificación"
-
-msgctxt "field:galatea.user,write_uid:"
-msgid "Write User"
-msgstr "Usuario modificación"
-
-msgctxt "field:galatea.user-galatea.website,create_date:"
-msgid "Create Date"
-msgstr "Fecha creación"
-
-msgctxt "field:galatea.user-galatea.website,create_uid:"
-msgid "Create User"
-msgstr "Usuario creación"
-
-msgctxt "field:galatea.user-galatea.website,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:galatea.user-galatea.website,rec_name:"
-msgid "Name"
-msgstr "Nombre"
-
 msgctxt "field:galatea.user-galatea.website,user:"
 msgid "User"
 msgstr "Usuario"
@@ -308,14 +109,6 @@ msgstr "Usuario"
 msgctxt "field:galatea.user-galatea.website,website:"
 msgid "Website"
 msgstr "Sitio web"
-
-msgctxt "field:galatea.user-galatea.website,write_date:"
-msgid "Write Date"
-msgstr "Fecha modificación"
-
-msgctxt "field:galatea.user-galatea.website,write_uid:"
-msgid "Write User"
-msgstr "Usuario modificación"
 
 msgctxt "field:galatea.website,active:"
 msgid "Active"
@@ -333,14 +126,6 @@ msgctxt "field:galatea.website,country:"
 msgid "Country"
 msgstr "Paises"
 
-msgctxt "field:galatea.website,create_date:"
-msgid "Create Date"
-msgstr "Fecha creación"
-
-msgctxt "field:galatea.website,create_uid:"
-msgid "Create User"
-msgstr "Usuario creación"
-
 msgctxt "field:galatea.website,currency:"
 msgid "Currency"
 msgstr "Moneda"
@@ -349,9 +134,9 @@ msgctxt "field:galatea.website,folder:"
 msgid "Folder"
 msgstr "Directorio"
 
-msgctxt "field:galatea.website,id:"
-msgid "ID"
-msgstr "ID"
+msgctxt "field:galatea.website,languages:"
+msgid "Languages"
+msgstr "Idiomas"
 
 msgctxt "field:galatea.website,metadescription:"
 msgid "Meta Description"
@@ -366,10 +151,6 @@ msgid "Meta Title"
 msgstr "Meta Title"
 
 msgctxt "field:galatea.website,name:"
-msgid "Name"
-msgstr "Nombre"
-
-msgctxt "field:galatea.website,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
@@ -393,77 +174,29 @@ msgctxt "field:galatea.website,uri:"
 msgid "Uri"
 msgstr "Uri"
 
-msgctxt "field:galatea.website,write_date:"
-msgid "Write Date"
-msgstr "Fecha modificación"
-
-msgctxt "field:galatea.website,write_uid:"
-msgid "Write User"
-msgstr "Usuario modificación"
-
 msgctxt "field:galatea.website-country.country,country:"
 msgid "Country"
 msgstr "Paises"
-
-msgctxt "field:galatea.website-country.country,create_date:"
-msgid "Create Date"
-msgstr "Fecha creación"
-
-msgctxt "field:galatea.website-country.country,create_uid:"
-msgid "Create User"
-msgstr "Usuario creación"
-
-msgctxt "field:galatea.website-country.country,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:galatea.website-country.country,rec_name:"
-msgid "Name"
-msgstr "Nombre"
 
 msgctxt "field:galatea.website-country.country,website:"
 msgid "Website"
 msgstr "Sitio web"
 
-msgctxt "field:galatea.website-country.country,write_date:"
-msgid "Write Date"
-msgstr "Fecha modificación"
-
-msgctxt "field:galatea.website-country.country,write_uid:"
-msgid "Write User"
-msgstr "Usuario modificación"
-
-msgctxt "field:galatea.website-currency.currency,create_date:"
-msgid "Create Date"
-msgstr "Fecha creación"
-
-msgctxt "field:galatea.website-currency.currency,create_uid:"
-msgid "Create User"
-msgstr "Usuario creación"
-
 msgctxt "field:galatea.website-currency.currency,currency:"
 msgid "Currency"
 msgstr "Moneda"
-
-msgctxt "field:galatea.website-currency.currency,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:galatea.website-currency.currency,rec_name:"
-msgid "Name"
-msgstr "Nombre"
 
 msgctxt "field:galatea.website-currency.currency,website:"
 msgid "Website"
 msgstr "Sitio web"
 
-msgctxt "field:galatea.website-currency.currency,write_date:"
-msgid "Write Date"
-msgstr "Fecha modificación"
+msgctxt "field:galatea.website-ir.lang,language:"
+msgid "Language"
+msgstr "Idioma"
 
-msgctxt "field:galatea.website-currency.currency,write_uid:"
-msgid "Write User"
-msgstr "Usuario modificación"
+msgctxt "field:galatea.website-ir.lang,website:"
+msgid "Website"
+msgstr "Sitio Web"
 
 msgctxt "field:ir.attachment,allow_galatea:"
 msgid "Allow Galatea"
@@ -581,6 +314,10 @@ msgctxt "model:galatea.website-currency.currency,name:"
 msgid "Currencies to be made available on website"
 msgstr "Monedas disponibles en este sitio web"
 
+msgctxt "model:galatea.website-ir.lang,name:"
+msgid "Website Language Relations"
+msgstr "Relaciones idioma sitio web"
+
 msgctxt "model:ir.action,name:act_galatea_configuration_form"
 msgid "Configuration"
 msgstr "Configuración"
@@ -612,6 +349,66 @@ msgstr "Eliminar cache"
 msgctxt "model:ir.action,name:wizard_galatea_send_password"
 msgid "Send New Password"
 msgstr "Enviar nueva contraseña"
+
+msgctxt "model:ir.message,text:msg_change_file_name"
+msgid "You can't change file name."
+msgstr "No puede cambiar el nombre del fichero."
+
+msgctxt "model:ir.message,text:msg_email_subject"
+msgid "%(website)s. New password reset"
+msgstr "%(website)s. Nueva contraseña reiniciada"
+
+msgctxt "model:ir.message,text:msg_email_text"
+msgid ""
+"Hello %(name)s\n"
+"New password reset for your user account %(email)s: %(password)s %(websites)s\n"
+"You could drop this email.\n"
+"Don't repply this email. It's was generated automatically"
+msgstr ""
+"Hola %(name)s\n"
+"Una nueva contraseña se ha añadido al usuario %(email)s: %(password)s\n"
+"\"%(websites)s\n"
+"Elimine este correo.\n"
+"No responga a este correo. Se ha generado automáticamente.\""
+
+msgctxt "model:ir.message,text:msg_folder_cannot_change"
+msgid "Folder name cannot be changed."
+msgstr "El nombre del directorio no se puede cambiar."
+
+msgctxt "model:ir.message,text:msg_invalid_file_name"
+msgid ""
+"Invalid file name: (1) '..' in file name (OR) (2) file name contains '/'"
+msgstr ""
+"Nombre de fichero incorrecto: (1) '..' in file name (OR) (2) file name "
+"contains '/'"
+
+msgctxt "model:ir.message,text:msg_invalid_name"
+msgid ""
+"Invalid folder name: (1) '.' in folder name (OR) (2) folder name begins with"
+" '/'"
+msgstr ""
+"Nombre de directorio incorrecto: (1) '.' in folder name (OR) (2) folder name"
+" begins with '/'"
+
+msgctxt "model:ir.message,text:msg_missing_user_site"
+msgid "Missing site in the \"%(user)s\" user."
+msgstr "No se dispone de sitio web para el usuario \"%(user)s\"."
+
+msgctxt "model:ir.message,text:msg_not_allow_copy"
+msgid "Not allow to copy."
+msgstr "No se permite copiar."
+
+msgctxt "model:ir.message,text:msg_not_dir_exist"
+msgid "Directory \"%(directory)s\" not exist."
+msgstr "El directorio \"%(directory)s\" no existe."
+
+msgctxt "model:ir.message,text:msg_send_info"
+msgid "Send new password to %(email)s."
+msgstr "Se ha enviado un correo a %(email)s."
+
+msgctxt "model:ir.model.button,string:remove_cache_button"
+msgid "Remove Cache"
+msgstr "Eliminar cache"
 
 msgctxt "model:ir.ui.menu,name:menu_galatea"
 msgid "Galatea"
@@ -673,10 +470,6 @@ msgctxt "view:galatea.remove.cache.start:"
 msgid "Be careful this action do command system!"
 msgstr "Esta acción ejecutará un comando de sistema."
 
-msgctxt "view:galatea.remove.cache.start:"
-msgid "Galatea Remove Cache"
-msgstr "Borrar cache Galatea"
-
 msgctxt "view:galatea.send.password.result:"
 msgid "Galatea Send Password"
 msgstr "Galatea envío contraseña"
@@ -696,10 +489,6 @@ msgstr "Previsualizar"
 msgctxt "view:galatea.static.folder:"
 msgid "Files"
 msgstr "Ficheros"
-
-msgctxt "view:galatea.static.folder:"
-msgid "Static Folder"
-msgstr "Directorios estáticos"
 
 msgctxt "view:galatea.user:"
 msgid "Galatea User"
@@ -722,20 +511,8 @@ msgid "Languages"
 msgstr "Idiomas"
 
 msgctxt "view:galatea.website:"
-msgid "Remove Cache"
-msgstr "Eliminar cache"
-
-msgctxt "view:galatea.website:"
 msgid "SEO"
 msgstr "SEO"
-
-msgctxt "view:galatea.website:"
-msgid "Web Site"
-msgstr "Sitio web"
-
-msgctxt "view:galatea.website:"
-msgid "Web Sites"
-msgstr "Sitios web"
 
 msgctxt "view:party.party:"
 msgid "Galatea"
